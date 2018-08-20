@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>YelpCamp</title>
+        <link  rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.4/semantic.min.css">
+        <link  rel="stylesheet" type="text/css" href="/stylesheets/app.css">
+    </head>
+    
+    <body>
+        <div class="ui menu inverted fixed">
+            <div class="header item"><i class="icon tree"></i>YelpCamp</div>
+            <a href="/campgrounds" class="item">Campgrounds</a>
+            <a href="/campgrounds/new" class ="item">New</a>
+            <div class="right menu">
+                <% if(!currentUser){ %>
+                    <a href="/login" class="ui item">Login</a>
+                    <a href="/register" class="ui item">Sign Up</a>
+                <% }else{ %>
+                    <a href="#" class= "ui item">Signed in as <%=currentUser.username %></a>
+                    <a href="/logout" class="ui item">Logout</a>
+                <% } %>
+            </div>
+        </div>
+        
+        <div id="flashContainer" class ="container">
+            <% if(error && error.length >0){ %>    
+                <div class="ui negative message">
+                    <div class="header">
+                        <%= error %>
+                    </div> 
+                </div>
+            <% } %>
+            <% if(success && success.length >0){ %>
+                <div class="ui positive message">
+                    <div class="header">
+                        <%= success %>
+                </div>
+            <% } %>    
+        </div>
+        </div>
+        
+        
+        
+        
+   

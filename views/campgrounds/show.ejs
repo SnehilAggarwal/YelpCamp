@@ -1,0 +1,63 @@
+<% include ../partials/header %>
+
+<div class="ui main container extra">
+    <div class="ui grid">
+        <div class="four wide column">
+            <div class="ui segments">
+                <div class="ui segment">Item 1</div>
+                <div class="ui segment">Item 2</div>
+                <div class="ui segment">Item 3</div>
+            </div>
+        </div>
+        <div class="twelve wide column">
+            <div class="ui segment">
+                <div> <img class="ui fluid image" src="<%=camp.image %>"> </div>
+                <div class="ui grid container">
+                    <div class="eight wide column left floated">
+                        <div class=" ui header"><%= camp.name %></div>
+                    </div>
+                    <div class="four wide column right floated right aligned">
+                        <div class="ui header">9$/Night</div>
+                    </div>
+                </div>
+                <div class="ui piled segment"> <%=camp.desc%> </div>
+                <div><em>Created by <%=camp.author.username%></em></div>
+                <% if(currentUser && camp.author.id.equals(currentUser._id)){ %>    
+                    <a href="/campgrounds/<%=camp._id%>/edit" class="ui grey button">Edit</a>
+                    <form id="deleteForm" action="/campgrounds/<%=camp._id%>?_method=DELETE" method="POST">
+                        <button class="ui red button">Delete</button>
+                    </form>
+                <% } %>    
+            </div>
+        </div>
+    </div>
+    <div class="ui grid">
+        <div class="twelve wide column right floated">
+            <div class="ui comments">
+                <h3 class="ui dividing header">Comments</h3>
+                <div class="comment">
+                    <% camp.comments.forEach(function(comment){ %>
+                        <a class="author"><%=comment.author.username%></a>
+                        <div class="metadata">
+                            <span class="date">Today at 5:42PM</span>
+                        </div>
+                        <div class="text">
+                            <%= comment.text%>
+                        </div>
+                        <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                        <div class="actions">
+                            <a class="ui button mini" href="/campgrounds/<%=camp._id%>/comments/<%=comment._id%>/edit">Edit</a>
+                            <form id="deleteForm" action="/campgrounds/<%=camp._id%>/comments/<%=comment._id%>?_method=DELETE" method="POST">
+                                <button class="ui button mini"><a>Delete</a></button>
+                            </form>
+                        </div>
+                        <% } %>
+                    <% }); %>
+                    <a class="ui blue labeled submit icon button" href="/campgrounds/<%=camp._id%>/comments/new"><i class="icon edit"></i>Add Comment</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

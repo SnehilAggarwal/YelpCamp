@@ -1,0 +1,22 @@
+<% include ../partials/header %>
+
+<div class="ui main text container segment">
+    <div class="ui huge header">Create your Own Campground!!!! </div>
+    <form action="/campgrounds" method="POST" class="ui form">
+      <div class="field">
+        <label>Name</label>
+        <input type= "text" placeholder="Name of Your Campground" name="name">
+      </div>
+      <div class="field">
+        <label>Image</label>
+        <input type="text" placeholder="How it Looks Like??" name="image">
+      </div>
+      <div class="field">
+        <label>Description</label>
+         <textarea name="desc"></textarea>
+      </div>
+      <button class="ui button" type="submit">Submit</button>
+    </form>
+</div>
+
+<% include ../partials/header %>
