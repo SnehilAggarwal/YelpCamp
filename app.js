@@ -37,7 +37,7 @@ app.use(function(req,res,next){
 });
 
 //seedDB();
-mongoose.connect("mongodb://localhost:27017/yelp_camp",{ useNewUrlParser: true});
+mongoose.connect("mongodb://snehil:goodboy1@ds125272.mlab.com:25272/yelpcamp12345",{ useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended : true}));
 app.set("view engine","ejs");
 app.use(express.static("public"));
