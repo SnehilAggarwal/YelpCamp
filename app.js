@@ -38,7 +38,7 @@ app.use(function(req,res,next){
 
 //seedDB();
 //mongodb://snehil:goodboy1@ds125272.mlab.com:25272/yelpcamp12345
-mongoose.connect(process.env.DATABASEURL,{ useNewUrlParser: true});
+mongoose.connect("mongodb+srv://admin:admin@cluster0.zkuun.mongodb.net/yelpcamp12345?retryWrites=true&w=majority",{ useNewUrlParser: true});
 app.use(bodyParser.urlencoded({extended : true}));
 app.set("view engine","ejs");
 app.use(express.static("public"));
@@ -53,6 +53,7 @@ app.get("/",function(req,res){
     res.render("landing");
 });
 
-app.listen(process.env.PORT,process.env.IP,function(){
-    console.log("Yelp Camp has Started");
+//process.env.PORT
+app.listen("3000",process.env.IP,function(){
+    console.log("Yelp Camp has Started " + process.env.PORT);
 });
