@@ -53,7 +53,6 @@ app.get("/",function(req,res){
     res.render("landing");
 });
 
-//process.env.PORT
-app.listen("3000",process.env.IP,function(){
-    console.log("Yelp Camp has Started " + process.env.PORT);
+app.listen(process.env.PORT,process.env.IP,function(){
+    console.log("Yelp Camp has Started ");
 });
